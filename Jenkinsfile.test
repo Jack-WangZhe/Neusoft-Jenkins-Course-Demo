@@ -1,0 +1,17 @@
+node {
+    stage('Fetch Source Code') {
+        checkout scm
+    }
+
+    stage('Install UI Dependencies') {
+        dir("sample") {
+            sh "npm install"
+        }
+    }
+
+    stage('Start UI Project') {
+        dir("sample") {
+            sh "npm run start"
+        }
+    }
+}
